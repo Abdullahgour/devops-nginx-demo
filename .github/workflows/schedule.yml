@@ -2,7 +2,7 @@ name: Scheduled Workflow
 
 on:
   schedule:
-    - cron: '1 * * * *'
+    - cron: '45 6 * * *'
 
 jobs:
   scheduled-job:
