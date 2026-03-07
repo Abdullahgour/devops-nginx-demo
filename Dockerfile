@@ -1,12 +1,14 @@
 # Take Pateela 2
 
-FROM nginx
+FROM python:3.13-slim
 
 # Cooker
 
 WORKDIR /app
 
 # ingredients
-COPY index.html /usr/share/nginx/html
+COPY . .
 
-EXPOSE 80
+RUN pip install -r requirements.txt
+
+CMD [ "python","app.py" ]
