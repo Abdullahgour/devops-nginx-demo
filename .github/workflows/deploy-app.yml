@@ -8,8 +8,8 @@ jobs:
     
     deployment:
         runs-on: self-hosted
-        environment: |
-               DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USERNAME}}
+        env:
+         DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
 
         
         steps:
