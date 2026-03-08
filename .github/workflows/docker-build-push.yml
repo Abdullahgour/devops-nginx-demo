@@ -23,6 +23,8 @@ jobs:
        with:
           context: .
           push: true
+          no-cache: true
+
           tags: | 
            ${{ vars.DOCKERHUB_USERNAME }}/github-actions-app:${{ github.ref_name }}
            ${{ vars.DOCKERHUB_USERNAME }}/github-actions-app:latest
