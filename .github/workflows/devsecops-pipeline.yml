@@ -1,0 +1,17 @@
+name: devsecops end to end pipline
+
+on:
+    workflow_dispatch:
+
+jobs:
+  
+    code:
+      uses: ./.github/workflows/code-quality.yml
+    secrets:
+      uses: ./.github/workflows/secrets-scan.yml
+    dependency:
+      uses: ./.github/workflows/dependency-scan.yml
+    docker:
+      uses: ./.github/workflows/docker-lint.yml
+    image:
+      uses: ./.github/workflows/image-scan.yml
