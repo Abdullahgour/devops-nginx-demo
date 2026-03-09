@@ -19,8 +19,9 @@ jobs:
               uses: docker/setup-compose-action@v2
     
            
-            - name: Stop old containers
-              run: docker-compose down
-
+         
             - name: Deploy new container
-              run: docker-compose up -d --build --force-recreate --remove-orphans
+              run: |
+               docker-compose down
+               docker-compose pull
+               docker-compose up -d --force-recreate
