@@ -2,6 +2,9 @@ name: image scanner
 
 on:
     workflow_call:
+     secrets:
+      DOCKERHUB_TOKEN:
+        required: true
 jobs:
     images-scans:
         runs-on: ubuntu-latest
@@ -23,3 +26,5 @@ jobs:
              exit-code: 1
              ignore-unfixed: true
              severity: CRITICAL,HIGH
+
+             
