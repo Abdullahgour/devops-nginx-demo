@@ -18,5 +18,4 @@ jobs:
       uses: ./.github/workflows/docker-build-push.yml
     image:
       uses: ./.github/workflows/image-scan.yml
-      secrets:
-       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      
