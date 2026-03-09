@@ -6,19 +6,20 @@ on:
     branches: [main]
 jobs:
   
-    code:
+    code-scan:
       uses: ./.github/workflows/code-quality.yml
-    secrets:
+    secrets-scan:
       uses: ./.github/workflows/secrets-scan.yml
-    dependency:
+    dependency-scan:
       uses: ./.github/workflows/dependency-scan.yml
-    docker:
+    docker-scan:
       uses: ./.github/workflows/docker-lint.yml
-    build:
+    build-scan:
+     needs: [code-scan,secrets-scan,dependency-scan,docker-scan]
      uses: ./.github/workflows/docker-build-push.yml
- 
+     secrets: inherit 
 
-    image:
+    image-scan:
+     needs: [build-scan]
      uses: ./.github/workflows/image-scan.yml
-     
-      
+     secrets: inherit
