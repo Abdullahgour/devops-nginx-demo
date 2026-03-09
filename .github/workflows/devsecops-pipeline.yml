@@ -16,12 +16,9 @@ jobs:
       uses: ./.github/workflows/docker-lint.yml
     build:
      uses: ./.github/workflows/docker-build-push.yml
-     secrets:
-      DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
-      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+ 
 
     image:
      uses: ./.github/workflows/image-scan.yml
-     secrets:
-      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+     
       
