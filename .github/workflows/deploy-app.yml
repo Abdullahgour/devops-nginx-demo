@@ -14,7 +14,7 @@ jobs:
     
     deployment:
         if: ${{ github.event.workflow_run.conclusion == 'success' }}
-        runs-on: self-hosted
+        runs-on: ubuntu-latest
         env:
          DOCKERHUB_USER: ${{ vars.DOCKERHUB_USER }}
 
