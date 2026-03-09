@@ -9,7 +9,7 @@ def hello_world():
 
 @app.route('/health')
 def health():
-    return 'Server is up and running'
+    return 'Server is up and rrunning'
 
 
 if __name__ == "__main__":
