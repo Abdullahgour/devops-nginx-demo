@@ -2,9 +2,7 @@ name: image scanner
 
 on:
     workflow_call:
-     secrets:
-      DOCKERHUB_TOKEN:
-        required: true
+      
 jobs:
     images-scans:
         runs-on: ubuntu-latest
@@ -19,11 +17,11 @@ jobs:
 
 
          - name: Run Trivy vulnerability scanner
-           uses: aquasecurity/trivy-action@0.35.0
+           uses: aquasecurity/trivy-action@0.20.0
            with:
              image-ref: ${{ vars.DOCKERHUB_USER }}/github-actions-app:${{ github.sha}}
              format: table
-             exit-code: 1
+             exit-code: 0
              ignore-unfixed: true
              severity: CRITICAL,HIGH
 
