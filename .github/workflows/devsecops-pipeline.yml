@@ -1,9 +1,12 @@
 name: devsecops end to end pipline
 
 on:
-    push:
-      branches: [main]
-
+     workflow_call:
+      secrets:
+       DOCKERHUB_USER:
+        required: true
+       DOCKERHUB_TOKEN:
+        required: true
 jobs:
   
     code:
@@ -15,7 +18,13 @@ jobs:
     docker:
       uses: ./.github/workflows/docker-lint.yml
     build:
-      uses: ./.github/workflows/docker-build-push.yml
+     uses: ./.github/workflows/docker-build-push.yml
+     secrets:
+      DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+
     image:
-      uses: ./.github/workflows/image-scan.yml
+     uses: ./.github/workflows/image-scan.yml
+     secrets:
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
       
