@@ -23,3 +23,8 @@ jobs:
      needs: [build-scan]
      uses: ./.github/workflows/image-scan.yml
      secrets: inherit
+
+    deploy:
+     needs: [image-scan]
+     uses: ./.github/workflows/deploy-server.yml
+     secrets: inherit
