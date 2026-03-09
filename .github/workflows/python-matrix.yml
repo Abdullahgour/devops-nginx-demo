@@ -26,3 +26,9 @@ jobs:
 
           - name: run linter
             run: flake8 app.py
+
+          
+          - name: Dockerfile Lint
+            uses: hadolint/hadolint-action@v3
+            with:
+             dockerfile: Dockerfile
