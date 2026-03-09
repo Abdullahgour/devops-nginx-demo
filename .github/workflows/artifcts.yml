@@ -1,19 +1,30 @@
-name: upload artifact
+name: artifact between jobs
 
-on:
- workflow_dispatch: 
+on: push
 
 jobs:
-  build:
+  job1:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Create test report
-        run: |
-          echo "Test execution successful" > report.txt
+      - name: Generate file
+        run: echo "Hello from Job1" > message.txt
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: test-report
-          path: report.txt
+          name: shared-file
+          path: message.txt
+
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: shared-file
+
+      - name: Print artifact
+        run: cat message.txt
