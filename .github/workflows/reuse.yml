@@ -10,7 +10,7 @@ on:
         required: true
         type: string
         default: staging
-
+#
     secrets:
       docker_token:
         required: true
