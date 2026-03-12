@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    uses: ./.github/workflows/resuseable.yml
+    uses: ./.github/workflows/reuse.yml
 
     with:
       app_name: "my-web-app"
