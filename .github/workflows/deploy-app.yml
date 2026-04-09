@@ -1,11 +1,11 @@
 name: deploy flask app
 
 on:
-  workflow_dispatch:
-# workflow_run:
-   #     workflows: ["docker build push"]
- #       types:
-#            - completed
+# workflow_dispatch:
+ workflow_run:
+      workflows: ["docker build push"]
+      types:
+           - completed
 
 
 
@@ -13,7 +13,7 @@ jobs:
 
     
     deployment:
-      #  if: ${{ github.event.workflow_run.conclusion == 'success' }}
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
         runs-on: self-hosted
         env:
          DOCKERHUB_USER: ${{ vars.DOCKERHUB_USER }}
@@ -28,8 +28,8 @@ jobs:
            
          
             - name: Deploy new container
-              run: docker compose up -d --build
-             # run: docker compose down && docker compose up -d --force-recreate --pull always
+             # run: docker compose up -d --build
+              run: docker compose down && docker compose up -d --force-recreate --pull always
               #  
             #    docker-compose pull
               #  docker-compose up -d --force-recreate 
